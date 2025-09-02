@@ -7,6 +7,34 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from ultralytics import YOLO
 from PIL import Image
+# backend/main.py
+import os # <-- Import os
+# ... (other imports)
+from fastapi.middleware.cors import CORSMiddleware
+# ...
+
+app = FastAPI(...)
+
+# --- CORS (Cross-Origin Resource Sharing) ---
+# Get the frontend URL from an environment variable.
+# Provide a default for local development.
+CLIENT_URL = os.getenv("CORS_ORIGIN", "http://localhost:5173")
+
+origins = [CLIENT_URL, "https://wheat-pest-and-disease-detection-frontend.onrender.com"]
+
+# If you need to allow more origins, you can parse a comma-separated string
+# E.g., CORS_ORIGINS=http://a.com,http://b.com
+# cors_origins_str = os.getenv("CORS_ORIGINS")
+# if cors_origins_str:
+#     origins.extend(cors_origins_str.split(','))
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # --- Configuration ---
 MODEL_PATH = "models/best_14.pt"
