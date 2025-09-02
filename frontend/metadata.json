@@ -1,0 +1,5 @@
+{
+  "name": "Image Processor Frontend",
+  "description": "A minimal web interface to upload one or more images for processing. This application provides a clean UI for selecting files, viewing previews, and initiating a simulated processing task.",
+  "requestFramePermissions": []
+}
