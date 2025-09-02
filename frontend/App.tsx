@@ -6,6 +6,8 @@ import { UploadIcon, SpinnerIcon, CheckCircleIcon } from "./components/Icons";
 import ImageGrid from "./components/ImageGrid";
 import ImageModal from "./components/ImageModal";
 
+const API_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
+
 export default function App() {
   const [selectedFiles, setSelectedFiles] = useState<ImageFile[]>([]);
   const [processedFiles, setProcessedFiles] = useState<ImageFile[]>([]);
@@ -83,7 +85,7 @@ export default function App() {
     });
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/process", {
+      const response = await fetch(`${API_URL}/api/process`, {
         method: "POST",
         body: formData,
       });

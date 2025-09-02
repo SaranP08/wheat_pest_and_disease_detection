@@ -1,0 +1,8 @@
+# backend/requirements.txt
+fastapi
+uvicorn[standard]
+python-multipart
+ultralytics==8.2.10
+opencv-python-headless
+Pillow
+gunicorn  # <-- Add this line
